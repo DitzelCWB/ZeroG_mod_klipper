@@ -31,28 +31,10 @@ enable_object_processing = True
 
 [history]
 
-[power ZeroG Printer]
-type = tplink_smartplug
-address = 192.168.2.31
-restart_klipper_when_powered = True
-
 [update_manager]
 channel = dev
 refresh_interval = 168
 enable_auto_refresh = True
-
-[update_manager mainsail-config]
-type = git_repo
-primary_branch = master
-path = ~/mainsail-config
-origin = https://github.com/mainsail-crew/mainsail-config.git
-managed_services = klipper
-
-[update_manager mainsail]
-type = web
-channel = stable
-repo = mainsail-crew/mainsail
-path = ~/mainsail
 
 [update_manager crowsnest]
 type = git_repo
@@ -70,8 +52,7 @@ requirements = requirements.txt
 install_script = install.sh
 is_system_service = False
 managed_services = klipper
-info_tags = 
-	desc=Beacon Surface Scanner
+info_tags = desc=Beacon Surface Scanner
 
 [update_manager Klippain-ShakeTune]
 type = git_repo
@@ -98,4 +79,18 @@ path = /home/pi/chopper-resonance-tuner
 origin = https://github.com/MRX8024/chopper-resonance-tuner.git
 primary_branch = main
 managed_services = klipper
+
+[update_manager mainsail]
+path = /home/pi/mainsail
+repo = mainsail-crew/mainsail
+channel = stable
+type = web
+persistent_files = config.json
+
+[update_manager mainsail-config]
+managed_services = klipper
+origin = https://github.com/mainsail-crew/mainsail-config.git
+path = /home/pi/mainsail-config
+primary_branch = master
+type = git_repo
 
